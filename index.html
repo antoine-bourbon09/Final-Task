@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Shield Futures - Protecting Minds, Building Futures</title>
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -81,6 +81,12 @@
 
         .nav-arrow:active {
             transform: scale(0.95);
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: scale(1);
         }
 
         /* ===== UTILITY CLASSES ===== */
@@ -499,16 +505,16 @@
 <body>
     <!-- NAVIGATION ARROWS -->
     <div class="nav-arrows">
-        <button class="nav-arrow" onclick="scrollToSection('up')">↑</button>
-        <button class="nav-arrow" onclick="scrollToSection('down')">↓</button>
+        <button class="nav-arrow" id="upArrow" onclick="scrollToSection('up')" disabled>↑</button>
+        <button class="nav-arrow" id="downArrow" onclick="scrollToSection('down')">↓</button>
     </div>
 
     <!-- HERO SECTION -->
-    <section class="hero">
+    <section id="hero" class="section hero">
         <div class="container">
             <div class="hero-content">
                 <div class="shield-icon">
-                    <img src="logo.svg" alt="Shield Futures Logo">
+                    <img src="logo.png" alt="Shield Futures Logo">
                 </div>
                 <h1><span class="highlight">PROJECT SHIELD</span><br>FUTURES</h1>
                 <h2>Protecting Minds, Building Futures &mdash; A Gun-Free Tomorrow</h2>
@@ -652,49 +658,89 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div class="footer-logo">SHIELD<span>FUTURES</div>
+            <div class="footer-logo">SHIELD<span>FUTURES</span></div>
             <div class="footer-message">Peace • Education • Safety • Hope</div>
         </div>
     </footer>
 
     <script>
-        // Scroll animation trigger
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animate-fade-in-up');
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (elementPosition < windowHeight * 0.85) {
-                    element.style.opacity = '1';
-                }
-            });
-        };
+        // Get all sections
+        const sections = document.querySelectorAll('.section');
+        const upArrow = document.getElementById('upArrow');
+        const downArrow = document.getElementById('downArrow');
 
-        // Navigation arrows functionality
-        function scrollToSection(direction) {
-            const sections = document.querySelectorAll('.section');
-            const currentSection = document.querySelector('.section:hover') || 
-                                  Array.from(sections).find(section => {
-                                      const rect = section.getBoundingClientRect();
-                                      return rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-                                  });
+        // Update arrow states on scroll
+        function updateArrowStates() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            // Disable up arrow if at top
+            upArrow.disabled = scrollPosition <= 0;
             
-            let targetIndex = 0;
-            if (direction === 'down') {
-                if (currentSection) {
-                    targetIndex = Array.from(sections).indexOf(currentSection) + 1;
-                    if (targetIndex >= sections.length) targetIndex = 0;
+            // Disable down arrow if at bottom
+            downArrow.disabled = scrollPosition + windowHeight >= documentHeight - 10;
+        }
+
+        // Scroll to section with boundary checking
+        function scrollToSection(direction) {
+            const currentScroll = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            if (direction === 'up') {
+                // If at top, stay at top
+                if (currentScroll <= 0) return;
+                
+                // Find the section that contains the top of the viewport
+                let targetSection = null;
+                for (let i = sections.length - 1; i >= 0; i--) {
+                    const sectionTop = sections[i].offsetTop;
+                    if (currentScroll > sectionTop - 100) {
+                        targetSection = sections[i];
+                        break;
+                    }
                 }
-                sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
-            } else if (direction === 'up') {
-                if (currentSection) {
-                    targetIndex = Array.from(sections).indexOf(currentSection) - 1;
-                    if (targetIndex < 0) targetIndex = sections.length - 1;
+                
+                // If we found a section, scroll to its top
+                // If we're at the first section, scroll to very top
+                if (targetSection && targetSection !== sections[0]) {
+                    const prevSection = targetSection.previousElementSibling;
+                    if (prevSection && prevSection.classList.contains('section')) {
+                        prevSection.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        // Scroll to top of current section
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
                 } else {
-                    targetIndex = sections.length - 1;
+                    // Scroll to very top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
-                sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
+            } else if (direction === 'down') {
+                // If at bottom, stay at bottom
+                if (currentScroll + windowHeight >= documentHeight - 10) return;
+                
+                // Find the section that contains the bottom of the viewport
+                let targetSection = null;
+                for (let section of sections) {
+                    const sectionBottom = section.offsetTop + section.offsetHeight;
+                    if (currentScroll + windowHeight < sectionBottom + 100) {
+                        targetSection = section;
+                        break;
+                    }
+                }
+                
+                // Scroll to next section
+                if (targetSection && targetSection !== sections[sections.length - 1]) {
+                    const nextSection = targetSection.nextElementSibling;
+                    if (nextSection && nextSection.classList.contains('section')) {
+                        nextSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
             }
+            
+            // Update arrow states after scroll completes
+            setTimeout(updateArrowStates, 500);
         }
 
         // Keyboard navigation
@@ -706,8 +752,25 @@
             }
         });
 
+        // Scroll animation trigger
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in-up');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementPosition < windowHeight * 0.85) {
+                    element.style.opacity = '1';
+                }
+            });
+            updateArrowStates();
+        };
+
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+        window.addEventListener('resize', updateArrowStates);
+        
+        // Initialize arrow states
+        updateArrowStates();
     </script>
 </body>
 </html>
