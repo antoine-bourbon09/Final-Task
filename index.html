@@ -6,7 +6,7 @@
     <title>Project Shield Futures - Protecting Minds, Building Futures</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ===== CSS VARIABLES ===== */
         :root {
@@ -40,119 +40,55 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         /* ===== UTILITY CLASSES ===== */
         .section {
-            padding: 80px 0;
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 3rem;
+            font-weight: 900;
             text-align: center;
             margin-bottom: 60px;
             color: var(--text-light);
+            letter-spacing: -0.02em;
         }
 
         .section-title .highlight {
             color: var(--primary);
         }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background-color: var(--primary);
-            color: var(--text-dark);
+        .section-subtitle {
+            font-size: 1.5rem;
             font-weight: 600;
-            font-size: 1rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 0.05em;
         }
 
-        .btn:hover {
-            background-color: #059669;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-light);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary);
-            color: var(--text-dark);
-        }
-
-        .badge {
+        .section-number {
             display: inline-block;
-            padding: 6px 16px;
-            background-color: rgba(16, 185, 129, 0.1);
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-radius: 20px;
-            border: 1px solid var(--primary);
-        }
-
-        /* ===== HEADER & HERO SECTION ===== */
-        header {
-            padding: 20px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background-color: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
+            padding: 8px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 25px;
             font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
+            font-weight: 800;
+            color: var(--bg-dark);
+            margin-right: 15px;
         }
 
-        .logo span {
-            color: var(--text-light);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
+        /* ===== HERO SECTION ===== */
         .hero {
-            padding: 120px 0 80px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
+            padding: 120px 0;
             position: relative;
             overflow: hidden;
         }
@@ -164,302 +100,220 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 50%);
             pointer-events: none;
         }
 
         .hero-content {
-            max-width: 800px;
+            text-align: center;
             position: relative;
             z-index: 1;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
+            font-size: 4.5rem;
+            font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             color: var(--text-light);
+            letter-spacing: -0.02em;
         }
 
         .hero h1 .highlight {
             color: var(--primary);
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
             color: var(--text-muted);
-            margin-bottom: 30px;
-            max-width: 600px;
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
         }
 
-        .hero-actions {
-            display: flex;
-            gap: 20px;
-            align-items: center;
+        .hero-location {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 50px;
         }
 
         .shield-icon {
-            width: 60px;
-            height: 60px;
+            width: 100px;
+            height: 100px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
+            margin: 0 auto 40px;
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
         }
 
         .shield-icon::after {
             content: '\26E8';
-            font-size: 2rem;
+            font-size: 3rem;
             color: var(--bg-dark);
         }
 
-        /* ===== SECTION 1: THE PROBLEM & TARGET AREA ===== */
-        #problem {
+        /* ===== PROJECT SECTIONS ===== */
+        .project-section {
             background-color: var(--bg-light);
             color: var(--text-dark);
         }
 
-        #problem .section-title {
+        .project-section .section-title {
             color: var(--text-dark);
         }
 
-        .cards-grid {
+        .project-section .section-subtitle {
+            color: var(--text-muted);
+        }
+
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
+            margin-top: 40px;
         }
 
-        .card {
+        .bento-card {
             background: var(--text-light);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(16, 185, 129, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* ===== SECTION 2: CREATIVE STRATEGY ===== */
-        #strategy {
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #1E293B 100%);
-        }
-
-        .strategy-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .strategy-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        .strategy-text h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--text-light);
-        }
-
-        .strategy-text h2 .highlight {
-            color: var(--primary);
-        }
-
-        .strategy-text p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        .slogan-box {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(249, 115, 22, 0.2));
-            border: 2px solid var(--primary);
             border-radius: 20px;
             padding: 40px;
-            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
         }
 
-        .slogan-box::before {
+        .bento-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .bento-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
         }
 
-        .slogan-box h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-light);
-            position: relative;
-            z-index: 1;
+        .bento-card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(249, 115, 22, 0.2));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+            border: 2px solid var(--primary);
         }
 
-        .slogan-box h3 .highlight {
-            color: var(--primary);
+        .bento-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            letter-spacing: -0.01em;
         }
 
-        .slogan-box p {
-            margin-top: 15px;
-            color: var(--text-muted);
-            font-style: italic;
-            position: relative;
-            z-index: 1;
+        .bento-card .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .visual-choices {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .visual-choices {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .choice-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .choice-item h4 {
-            font-size: 1rem;
+        .keyword-tag {
+            padding: 8px 18px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--primary);
-            margin-bottom: 10px;
         }
 
-        .choice-item p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* ===== SECTION 3: CAMPAIGN DEPLOYMENT ===== */
+        /* ===== DEPLOYMENT SECTION ===== */
         #deployment {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-        }
-
-        #deployment .section-title {
-            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1E293B 100%);
         }
 
         .deployment-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 1024px) {
+            .deployment-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .deployment-card {
-            background: var(--text-light);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .deployment-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
         }
 
         .deployment-card-icon {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(16, 185, 129, 0.1);
-            border-radius: 12px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
         }
 
         .deployment-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 800;
             margin-bottom: 15px;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
 
         .deployment-card p {
             color: var(--text-muted);
+            font-weight: 500;
             font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .cta-center {
-            text-align: center;
         }
 
         /* ===== FOOTER ===== */
         footer {
             background: linear-gradient(135deg, var(--bg-dark) 0%, #020617 100%);
-            padding: 60px 0 30px;
+            padding: 80px 0 40px;
             text-align: center;
         }
 
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
         .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 900;
             color: var(--primary);
             margin-bottom: 20px;
         }
@@ -468,75 +322,60 @@
             color: var(--text-light);
         }
 
-        footer p {
+        .footer-message {
+            font-size: 1.3rem;
             color: var(--text-muted);
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+            letter-spacing: 0.05em;
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 3rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .hero h2 {
+                font-size: 1.5rem;
             }
             
-            .section-title {
-                font-size: 2rem;
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 80px 0;
             }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
             .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .hero-actions {
-                flex-direction: column;
-                align-items: flex-start;
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
             }
             
             .section {
                 padding: 60px 0;
             }
             
-            .strategy-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .visual-choices {
+            .deployment-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -546,17 +385,8 @@
                 font-size: 2rem;
             }
             
-            .hero p {
-                font-size: 1rem;
-            }
-            
             .section-title {
                 font-size: 1.8rem;
-            }
-            
-            .cards-grid,
-            .deployment-grid {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -564,7 +394,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -573,6 +403,7 @@
         }
 
         .animate-fade-in-up {
+            opacity: 0;
             animation: fadeInUp 0.8s ease-out forwards;
         }
 
@@ -580,117 +411,151 @@
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">Shield<span>Futures</span></div>
-                <div class="nav-links">
-                    <a href="#problem">Our Focus</a>
-                    <a href="#strategy">Strategy</a>
-                    <a href="#deployment">Deployment</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="shield-icon"></div>
-                <span class="badge">Final Project - October 2026</span>
-                <h1><span class="highlight">Project Shield Futures</span></h1>
-                <p>Protecting Minds, Building Futures &mdash; A Gun-Free Tomorrow.</p>
-                <div class="hero-actions">
-                    <a href="#problem" class="btn">Explore Our Mission</a>
-                </div>
+                <h1><span class="highlight">PROJECT SHIELD</span><br>FUTURES</h1>
+                <h2>Protecting Minds, Building Futures &mdash; A Gun-Free Tomorrow</h2>
+                <div class="hero-location">Schools • High Schools • Universities</div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 1: THE PROBLEM & TARGET AREA -->
-    <section id="problem" class="section">
+    <!-- PROJECT 1: BACKGROUND CHECKS -->
+    <section id="project1" class="section project-section">
         <div class="container">
-            <h2 class="section-title">Our Focus: <span class="highlight">Safe School Communities</span></h2>
-            <div class="cards-grid">
-                <div class="card animate-fade-in-up delay-1">
-                    <div class="card-icon">🧠</div>
-                    <h3>Mental Health & Prevention</h3>
-                    <p>Investing in school counseling and mental health support to prevent violence before it starts. Early intervention saves lives.</p>
-                </div>
-                <div class="card animate-fade-in-up delay-2">
-                    <div class="card-icon">🔍</div>
-                    <h3>Community Background Checks</h3>
-                    <p>Advocating for comprehensive background checks to ensure weapons stay out of dangerous hands. Safety is everyone's responsibility.</p>
-                </div>
-                <div class="card animate-fade-in-up delay-3">
-                    <div class="card-icon">🏫</div>
-                    <h3>Safe Zones Creation</h3>
-                    <p>Establishing gun-free zones in schools and public spaces. Creating environments where children can learn and grow without fear.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 2: CREATIVE STRATEGY -->
-    <section id="strategy" class="section">
-        <div class="container">
-            <h2 class="section-title">Our <span class="highlight">Creative Strategy</span></h2>
-            <div class="strategy-content">
-                <div class="strategy-text animate-fade-in-up delay-1">
-                    <h2>Hope Over <span class="highlight">Fear</span></h2>
-                    <p>We believe that positive messaging is more powerful than fear-based campaigns. Our approach focuses on hope, growth, and community solidarity.</p>
-                    <p>Every visual element has been carefully chosen to convey peace and protection without any reference to weapons or violence.</p>
-                    <div class="visual-choices">
-                        <div class="choice-item">
-                            <h4>🌱 Emerald Green</h4>
-                            <p>Symbolizes growth, life, and a hopeful future for our youth.</p>
-                        </div>
-                        <div class="choice-item">
-                            <h4>🛡️ Shield Symbol</h4>
-                            <p>Represents protection and community solidarity, not weapon-based defense.</p>
-                        </div>
-                        <div class="choice-item">
-                            <h4>🌳 Trees & Sprouts</h4>
-                            <p>Embodies the growth and development of young minds in safe environments.</p>
-                        </div>
+            <h2 class="section-title"><span class="section-number">1</span>STRICT BACKGROUND CHECKS & AGE CONTROL</h2>
+            <div class="bento-grid">
+                <div class="bento-card animate-fade-in-up delay-1">
+                    <div class="bento-card-icon">🔍</div>
+                    <h3>Comprehensive Checks</h3>
+                    <div class="keywords">
+                        <span class="keyword-tag">Criminal History</span>
+                        <span class="keyword-tag">Mental Health</span>
+                        <span class="keyword-tag">Domestic Violence</span>
                     </div>
                 </div>
-                <div class="slogan-box animate-fade-in-up delay-2">
-                    <h3><span class="highlight">Books, Not Bullets.</span><br>Dreams, Not Drama.</h3>
-                    <p>Our core message in four simple words.</p>
+                <div class="bento-card animate-fade-in-up delay-2">
+                    <div class="bento-card-icon">📋</div>
+                    <h3>Age Verification</h3>
+                    <div class="keywords">
+                        <span class="keyword-tag">Minimum Age 21</span>
+                        <span class="keyword-tag">ID Required</span>
+                        <span class="keyword-tag">Strict Enforcement</span>
+                    </div>
+                </div>
+                <div class="bento-card animate-fade-in-up delay-3">
+                    <div class="bento-card-icon">📊</div>
+                    <h3>National Database</h3>
+                    <div class="keywords">
+                        <span class="keyword-tag">Centralized Records</span>
+                        <span class="keyword-tag">Real-time Updates</span>
+                        <span class="keyword-tag">All States</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: CAMPAIGN DEPLOYMENT -->
+    <!-- PROJECT 2: CAMPUS SECURITY -->
+    <section id="project2" class="section project-section">
+        <div class="container">
+            <h2 class="section-title"><span class="section-number">2</span>CAMPUS ENTRY CONTROL & SAFETY</h2>
+            <div class="bento-grid">
+                <div class="bento-card animate-fade-in-up delay-1">
+                    <div class="bento-card-icon">🪪</div>
+                    <h3>Access Badges</h3>
+                    <div class="keywords">
+                        <span class="keyword-tag">Students</span>
+                        <span class="keyword-tag">Staff</span>
+                        <span class="keyword-tag">Authorized Personnel</span>
+                    </div>
+                </div>
+                <div class="bento-card animate-fade-in-up delay-2">
+                    <div class="bento-card-icon">🚪</div>
+                    <h3>Entry Points</h3>
+                    <div class="keywords">
+                        <span class="keyword-tag">Metal Detectors</span>
+                        <span class="keyword-tag">Bag Checks</span>
+                        <span class="keyword-tag">Single Entry</span>
+                    </div>
+                </div>
+                <div class="bento-card animate-fade-in-up delay-3">
+                    <div class="bento-card-icon">👮</div>
+                    <h3>Security Personnel</h3>
+                    <div class="keywords">
+                        <span class="keyword-tag">Professional Agents</span>
+                        <span class="keyword-tag">Trained Staff</span>
+                        <span class="keyword-tag">Dedicated Teams</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT 3: PSYCHOLOGICAL SUPPORT -->
+    <section id="project3" class="section project-section">
+        <div class="container">
+            <h2 class="section-title"><span class="section-number">3</span>24/7 PSYCHOLOGICAL SUPPORT</h2>
+            <div class="bento-grid">
+                <div class="bento-card animate-fade-in-up delay-1">
+                    <div class="bento-card-icon">📞</div>
+                    <h3>Helpline</h3>
+                    <div class="keywords">
+                        <span class="keyword-tag">24/7 Available</span>
+                        <span class="keyword-tag">Confidential</span>
+                        <span class="keyword-tag">Free</span>
+                    </div>
+                </div>
+                <div class="bento-card animate-fade-in-up delay-2">
+                    <div class="bento-card-icon">👨‍⚕️</div>
+                    <h3>Professionals</h3>
+                    <div class="keywords">
+                        <span class="keyword-tag">Psychologists</span>
+                        <span class="keyword-tag">Counselors</span>
+                        <span class="keyword-tag">Trained Specialists</span>
+                    </div>
+                </div>
+                <div class="bento-card animate-fade-in-up delay-3">
+                    <div class="bento-card-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Support For</h3>
+                    <div class="keywords">
+                        <span class="keyword-tag">Students</span>
+                        <span class="keyword-tag">Parents</span>
+                        <span class="keyword-tag">Teachers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT 4: DEPLOYMENT -->
     <section id="deployment" class="section">
         <div class="container">
-            <h2 class="section-title">How & Where We <span class="highlight">Reach People</span></h2>
+            <h2 class="section-title">OUR ACTION PLAN: <span class="highlight">HOW WE DEPLOY</span></h2>
             <div class="deployment-grid">
                 <div class="deployment-card animate-fade-in-up delay-1">
                     <div class="deployment-card-icon">📱</div>
-                    <h3>Social Media Blast</h3>
-                    <p>Short, impactful video clips on TikTok and Instagram targeting 15-25 year olds. Directing traffic to this landing page for maximum engagement.</p>
+                    <h3>SOCIAL MEDIA</h3>
+                    <p>Short Impactful Videos • 15-25 Years Old • TikTok Instagram</p>
                 </div>
                 <div class="deployment-card animate-fade-in-up delay-2">
-                    <div class="deployment-card-icon">📋</div>
-                    <h3>School Campus Posters</h3>
-                    <p>Minimal, eye-catching posters displayed on high school and university campuses. Each poster features a QR code linking to our online Student Pledge.</p>
+                    <div class="deployment-card-icon">📢</div>
+                    <h3>CAMPUS POSTERS</h3>
+                    <p>Schools • High Schools • Universities • QR Codes</p>
                 </div>
                 <div class="deployment-card animate-fade-in-up delay-3">
-                    <div class="deployment-card-icon">✉️</div>
-                    <h3>Community Petition</h3>
-                    <p>Engaging citizens to send automated emails to local representatives. Advocating for safer community laws and gun-free school zones.</p>
+                    <div class="deployment-card-icon">🇺🇸</div>
+                    <h3>NATIONAL IMPLEMENTATION</h3>
+                    <p>All Schools • All States • Policy Advocacy</p>
                 </div>
-            </div>
-            <div class="cta-center animate-fade-in-up delay-4">
-                <a href="#" class="btn btn-secondary">Sign the Student Pledge</a>
             </div>
         </div>
     </section>
@@ -698,21 +563,13 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Shield<span>Futures</span></div>
-                <p>Project Shield Futures is a digital awareness initiative dedicated to promoting safe school communities and a gun-free tomorrow through education, advocacy, and positive messaging.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Contact Us</a>
-                </div>
-                <p class="copyright">© 2026 Project Shield Futures. All rights reserved. Peace, Education, Safety.</p>
-            </div>
+            <div class="footer-logo">SHIELD<span>FUTURES</span></div>
+            <div class="footer-message">Peace • Education • Safety • Hope</div>
         </div>
     </footer>
 
     <script>
-        // Simple scroll animation trigger
+        // Scroll animation trigger
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.animate-fade-in-up');
             elements.forEach(element => {
