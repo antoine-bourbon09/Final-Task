@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Shield Futures - Protecting Minds, Building Futures</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -45,12 +46,50 @@
             padding: 0 20px;
         }
 
+        /* ===== NAVIGATION ARROWS ===== */
+        .nav-arrows {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .nav-arrow {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--bg-dark);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
+        }
+
+        .nav-arrow:active {
+            transform: scale(0.95);
+        }
+
         /* ===== UTILITY CLASSES ===== */
         .section {
             padding: 100px 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
+            position: relative;
         }
 
         .section-title {
@@ -141,21 +180,21 @@
         }
 
         .shield-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 40px;
             box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+            overflow: hidden;
         }
 
-        .shield-icon::after {
-            content: '\26E8';
-            font-size: 3rem;
-            color: var(--bg-dark);
+        .shield-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* ===== PROJECT SECTIONS ===== */
@@ -174,9 +213,21 @@
 
         .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .bento-card {
@@ -188,6 +239,7 @@
             border: 2px solid rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
+            min-height: 320px;
         }
 
         .bento-card::before {
@@ -338,6 +390,16 @@
             .section-title {
                 font-size: 2.5rem;
             }
+            
+            .nav-arrows {
+                right: 15px;
+            }
+            
+            .nav-arrow {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 992px) {
@@ -350,7 +412,7 @@
             }
             
             .bento-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .section {
@@ -378,6 +440,16 @@
             .deployment-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .nav-arrows {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                top: auto;
+                transform: none;
+                flex-direction: row;
+                gap: 15px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -387,6 +459,15 @@
             
             .section-title {
                 font-size: 1.8rem;
+            }
+            
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .shield-icon {
+                width: 100px;
+                height: 100px;
             }
         }
 
@@ -416,11 +497,19 @@
     </style>
 </head>
 <body>
+    <!-- NAVIGATION ARROWS -->
+    <div class="nav-arrows">
+        <button class="nav-arrow" onclick="scrollToSection('up')">↑</button>
+        <button class="nav-arrow" onclick="scrollToSection('down')">↓</button>
+    </div>
+
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="shield-icon"></div>
+                <div class="shield-icon">
+                    <img src="logo.svg" alt="Shield Futures Logo">
+                </div>
                 <h1><span class="highlight">PROJECT SHIELD</span><br>FUTURES</h1>
                 <h2>Protecting Minds, Building Futures &mdash; A Gun-Free Tomorrow</h2>
                 <div class="hero-location">Schools • High Schools • Universities</div>
@@ -563,7 +652,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div class="footer-logo">SHIELD<span>FUTURES</span></div>
+            <div class="footer-logo">SHIELD<span>FUTURES</div>
             <div class="footer-message">Peace • Education • Safety • Hope</div>
         </div>
     </footer>
@@ -580,6 +669,42 @@
                 }
             });
         };
+
+        // Navigation arrows functionality
+        function scrollToSection(direction) {
+            const sections = document.querySelectorAll('.section');
+            const currentSection = document.querySelector('.section:hover') || 
+                                  Array.from(sections).find(section => {
+                                      const rect = section.getBoundingClientRect();
+                                      return rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+                                  });
+            
+            let targetIndex = 0;
+            if (direction === 'down') {
+                if (currentSection) {
+                    targetIndex = Array.from(sections).indexOf(currentSection) + 1;
+                    if (targetIndex >= sections.length) targetIndex = 0;
+                }
+                sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
+            } else if (direction === 'up') {
+                if (currentSection) {
+                    targetIndex = Array.from(sections).indexOf(currentSection) - 1;
+                    if (targetIndex < 0) targetIndex = sections.length - 1;
+                } else {
+                    targetIndex = sections.length - 1;
+                }
+                sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+                scrollToSection('down');
+            } else if (e.key === 'ArrowUp') {
+                scrollToSection('up');
+            }
+        });
 
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
