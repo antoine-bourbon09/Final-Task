@@ -9,6 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .news-card { margin-top: 40px; max-width: 560px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 16px; text-align: left; }
+        .news-image { width: 100%; height: auto; border-radius: 8px; display: block; }
+        .news-summary { margin: 12px 0 8px; font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.85); }
+        .news-link { color: #4da3ff; font-weight: 600; text-decoration: none; font-size: 14px; }
+        .news-link:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
@@ -58,6 +65,16 @@
                 <h1><span class="highlight">Guns Out.</span>Safety In.<br></h1>
                 <h2> </h2>
                 <div class="hero-location">Schools &middot; High Schools &middot; Universities</div>
+
+                <!-- NEWS UPDATE -->
+                <div class="news-card">
+                    <img class="news-image" src="https://images.unsplash.com/photo-1580582932707-520aed93755b?w=800&q=80" alt="Empty school corridor">
+                    <p class="news-summary">
+                        School shooting at an elementary school in Bend, Oregon: three children and a teacher killed, two wounded.
+                        The suspected shooter, a 16-year-old former student, was fatally shot by a community member.
+                    </p>
+                    <a class="news-link" href="https://abcnews.com/US/multiple-people-injured-shooting-oregon-elementary-fchool-suspeet/story?id=137303119" target="_blank" rel="noopener">Read the full article on ABC News &rarr;</a>
+                </div>
             </div>
         </div>
     </section>
